@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Desafio App Kotlin</string>
+    <string name="desc_btn_add_new_user">Botão para cadastrar novo usuário</string>
+</resources>
