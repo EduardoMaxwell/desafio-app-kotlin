@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/usersListFragment">
+
+    <fragment
+        android:id="@+id/usersListFragment"
+        android:name="br.com.eduardomaxwell.testeappkotlin.ui.home.userlist.UsersFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_users">
+        <action
+            android:id="@+id/action_users_fragment_to_add_user_fragment"
+            app:destination="@id/addUserFragment"
+            app:enterAnim="@anim/anim_slide_in_left"
+            app:exitAnim="@anim/anim_slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="br.com.eduardomaxwell.testeappkotlin.ui.home.adduser.AddUserFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_add_user">
+        <action
+            android:id="@+id/action_addUserFragment_to_usersListFragment"
+            app:destination="@id/usersListFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_right" />
+    </fragment>
+
+</navigation>

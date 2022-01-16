@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Desafio App Kotlin</string>
     <string name="desc_btn_add_new_user">Botão para cadastrar novo usuário</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_user_fragment">Add user</string>
+    <string name="hint_matricula">Matricula <font color='#FF0000'>*</font></string>
 </resources>
