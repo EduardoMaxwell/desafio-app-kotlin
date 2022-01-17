@@ -5,4 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_user_fragment">Add user</string>
     <string name="hint_matricula">Matricula <font color='#FF0000'>*</font></string>
+    <string name="txt_matricula">Matrícula:</string>
+    <string name="txt_cpf">CPF:</string>
+    <string name="txt_email">E-mail:</string>
 </resources>
