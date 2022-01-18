@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import br.com.eduardomaxwell.testeappkotlin.data.UserModel
+import br.com.eduardomaxwell.testeappkotlin.model.UserModel
 import br.com.eduardomaxwell.testeappkotlin.databinding.UserItemBinding
 
 class UserAdapter : ListAdapter<UserModel, UserAdapter.UserViewHolder>(DIFF_UTIL) {

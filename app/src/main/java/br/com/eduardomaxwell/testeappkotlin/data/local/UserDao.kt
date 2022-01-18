@@ -1,9 +1,8 @@
 package br.com.eduardomaxwell.testeappkotlin.data.local
 
-import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import br.com.eduardomaxwell.testeappkotlin.data.UserModel
+import br.com.eduardomaxwell.testeappkotlin.model.UserModel
 
 @Dao
 interface UserDao {

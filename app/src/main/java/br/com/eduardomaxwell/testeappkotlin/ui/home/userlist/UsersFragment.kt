@@ -31,14 +31,27 @@ class UsersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val userAdapter = UserAdapter()
+
+        setupRecycler(userAdapter)
+        setupListeners()
+    }
+
+    private fun setupListeners() {
         binding.fabAddUser.setOnClickListener {
             findNavController().navigate(R.id.action_users_fragment_to_add_user_fragment)
         }
+    }
 
-        val userAdapter = UserAdapter()
+    private fun setupRecycler(userAdapter: UserAdapter) {
         binding.rvUsers.layoutManager = LinearLayoutManager(this.context)
         binding.rvUsers.adapter = userAdapter
-        binding.rvUsers.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+        binding.rvUsers.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
         viewModel.users.observe(viewLifecycleOwner, { users ->
             users.let {
@@ -46,19 +59,5 @@ class UsersFragment : Fragment() {
             }
         })
     }
-
-    private fun setupRecycler(userAdapter: UserAdapter) {
-        viewModel.users.observe(viewLifecycleOwner, { users ->
-            users?.let {
-                with(binding.rvUsers) {
-
-                    adapter = userAdapter
-                    layoutManager = LinearLayoutManager(requireContext())
-                    userAdapter.submitList(users)
-                }
-            }
-        })
-    }
-
 
 }

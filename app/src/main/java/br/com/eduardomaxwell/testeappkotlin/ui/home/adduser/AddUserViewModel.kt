@@ -2,7 +2,7 @@ package br.com.eduardomaxwell.testeappkotlin.ui.home.adduser
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.eduardomaxwell.testeappkotlin.data.UserModel
+import br.com.eduardomaxwell.testeappkotlin.model.UserModel
 import br.com.eduardomaxwell.testeappkotlin.data.UserRepository
 import kotlinx.coroutines.launch
 

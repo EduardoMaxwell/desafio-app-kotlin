@@ -1,4 +1,4 @@
-package br.com.eduardomaxwell.testeappkotlin.data
+package br.com.eduardomaxwell.testeappkotlin.model
 
 import android.os.Parcelable
 import androidx.room.Entity

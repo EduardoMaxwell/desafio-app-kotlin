@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import br.com.eduardomaxwell.testeappkotlin.data.UserModel
+import br.com.eduardomaxwell.testeappkotlin.model.UserModel
 
 @Database(entities = [UserModel::class], version = 1, exportSchema = false)
 abstract class UserDatabase : RoomDatabase() {

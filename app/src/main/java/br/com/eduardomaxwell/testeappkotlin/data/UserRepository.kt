@@ -2,6 +2,7 @@ package br.com.eduardomaxwell.testeappkotlin.data
 
 import androidx.lifecycle.LiveData
 import br.com.eduardomaxwell.testeappkotlin.data.local.UserDao
+import br.com.eduardomaxwell.testeappkotlin.model.UserModel
 
 class UserRepository(private val dao: UserDao) {
 
