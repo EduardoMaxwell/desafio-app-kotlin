@@ -8,4 +8,6 @@
     <string name="txt_matricula">Matrícula:</string>
     <string name="txt_cpf">CPF:</string>
     <string name="txt_email">E-mail:</string>
+    <string name="txt_delete_user">Deletar</string>
+    <string name="btn_update">Atualizar</string>
 </resources>

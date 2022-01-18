@@ -1,10 +1,9 @@
 package br.com.eduardomaxwell.testeappkotlin.ui.home.adduser
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -12,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import br.com.eduardomaxwell.testeappkotlin.R
 import br.com.eduardomaxwell.testeappkotlin.databinding.FragmentAddUserBinding
 import br.com.eduardomaxwell.testeappkotlin.model.UserModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddUserFragment : Fragment() {
@@ -27,6 +27,7 @@ class AddUserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddUserBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -73,6 +74,7 @@ class AddUserFragment : Fragment() {
         binding.edtCpf.setText(user.cpf)
         binding.edtEmail.setText(user.email)
 
+        binding.btnSalvar.setText(R.string.btn_update)
         binding.btnSalvar.setOnClickListener { updateUser() }
 
     }
@@ -100,5 +102,46 @@ class AddUserFragment : Fragment() {
             binding.edtCpf.text.toString(),
             binding.edtEmail.text.toString()
         )
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        if (navigationArgs.userId > 0)
+            inflater.inflate(R.menu.menu_delete, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.deleteUser -> {
+                callConfirmationDelete()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun callConfirmationDelete() {
+        showConfirmationDialog()
+    }
+
+    private fun showConfirmationDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Atenção")
+            .setMessage("Esta ação irá excluir o usuário. Deseja continuar?")
+            .setCancelable(false)
+            .setNegativeButton("Não") { _, _ -> }
+            .setPositiveButton("Sim") { _, _ -> deleteUser() }.show()
+    }
+
+    private fun deleteUser() {
+        if (isEntryValid()) {
+            viewModel.deleteUser(
+                this.navigationArgs.userId,
+                this.binding.edtMatricula.text.toString(),
+                this.binding.edtCpf.text.toString(),
+                this.binding.edtEmail.text.toString()
+            )
+            val action = AddUserFragmentDirections.actionAddUserFragmentToUsersListFragment()
+            this.findNavController().navigate(action)
+        }
     }
 }

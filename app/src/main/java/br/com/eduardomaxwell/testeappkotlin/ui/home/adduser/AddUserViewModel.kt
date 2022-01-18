@@ -18,7 +18,6 @@ class AddUserViewModel(private val repository: UserRepository) : ViewModel() {
         repository.insert(user)
     }
 
-
     fun getUserBy(uid: Int): LiveData<UserModel> {
         return repository.getUserBy(uid)
     }
@@ -32,6 +31,17 @@ class AddUserViewModel(private val repository: UserRepository) : ViewModel() {
                 email = email
             )
             repository.update(user)
+        }
+
+    fun deleteUser(uid: Int, matricula: String, cpf: String, email: String) =
+        viewModelScope.launch {
+            val user = UserModel(
+                uid = uid,
+                matricula = matricula,
+                cpf = cpf,
+                email = email
+            )
+            repository.delete(user)
         }
 
     fun isEntryValid(
