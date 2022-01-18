@@ -13,11 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.vicmikhailau.maskededittext.MaskedEditText
             android:id="@+id/edtMatricula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_matricula" />
+            android:hint="@string/hint_matricula"
+            android:inputType="number"
+            app:mask="####-###/##" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -26,11 +28,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.vicmikhailau.maskededittext.MaskedEditText
             android:id="@+id/edtCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="CPF" />
+            android:hint="@string/hint_cpf"
+            android:inputType="number"
+            app:mask="###.###.###-##" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +48,9 @@
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail" />
+            android:hint="@string/hint_email"
+            android:inputType="textWebEmailAddress" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

@@ -1,8 +1,6 @@
 package br.com.eduardomaxwell.testeappkotlin.ui.home.adduser
 
-import android.content.Context
 import android.os.Bundle
-import android.text.Editable
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -11,6 +9,8 @@ import androidx.navigation.fragment.navArgs
 import br.com.eduardomaxwell.testeappkotlin.R
 import br.com.eduardomaxwell.testeappkotlin.databinding.FragmentAddUserBinding
 import br.com.eduardomaxwell.testeappkotlin.model.UserModel
+import br.com.eduardomaxwell.testeappkotlin.util.isValidCPF
+import br.com.eduardomaxwell.testeappkotlin.util.isValidEmail
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -45,12 +45,10 @@ class AddUserFragment : Fragment() {
                 if (isEntryValid()) {
                     addUser()
                 } else {
-                    Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT)
-                        .show()
+                    showToast("Preencha todos os campos")
                 }
             }
         }
-
     }
 
     private fun addUser() {
@@ -58,14 +56,22 @@ class AddUserFragment : Fragment() {
         val cpf = binding.edtCpf.text
         val email = binding.edtEmail.text
 
-        viewModel.addUser(mat.toString(), cpf.toString(), email.toString())
-        Toast.makeText(
-            requireContext(),
-            "Usuário salvo com sucesso",
-            Toast.LENGTH_SHORT
-        )
-            .show()
-        findNavController().navigate(R.id.action_addUserFragment_to_usersListFragment)
+        tirarCaractersCPF(cpf.toString())
+
+        if (!email.toString().isValidEmail()) {
+            showToast("Digite um e-mail válido")
+        } else if (!tirarCaractersCPF(cpf.toString()).isValidCPF()) {
+            showToast("Digite um CPF válido")
+        } else {
+            viewModel.addUser(mat.toString(), cpf.toString(), email.toString())
+            showToast("Usuário salvo com sucesso")
+            findNavController().navigate(R.id.action_addUserFragment_to_usersListFragment)
+        }
+    }
+
+    private fun tirarCaractersCPF(cpf: String): String {
+        val pattern = Regex("[^0-9]")
+        return cpf.replace(pattern, "")
     }
 
     private fun bind(user: UserModel) {
@@ -87,12 +93,12 @@ class AddUserFragment : Fragment() {
                 this.binding.edtCpf.text.toString(),
                 this.binding.edtEmail.text.toString(),
             )
-            Toast.makeText(requireContext(), "Usuário atualizado com sucesso", Toast.LENGTH_SHORT)
-                .show()
+            showToast("Usuário atualizado com sucesso")
+
             val action = AddUserFragmentDirections.actionAddUserFragmentToUsersListFragment()
             this.findNavController().navigate(action)
         } else {
-            Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+            showToast("Preencha todos os campos")
         }
     }
 
@@ -143,5 +149,14 @@ class AddUserFragment : Fragment() {
             val action = AddUserFragmentDirections.actionAddUserFragmentToUsersListFragment()
             this.findNavController().navigate(action)
         }
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(
+            requireContext(),
+            text,
+            Toast.LENGTH_SHORT
+        )
+            .show()
     }
 }
