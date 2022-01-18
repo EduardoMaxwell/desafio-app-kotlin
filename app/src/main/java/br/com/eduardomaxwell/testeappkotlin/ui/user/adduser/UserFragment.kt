@@ -148,6 +148,7 @@ class UserFragment : Fragment() {
             )
             val action = UserFragmentDirections.actionAddUserFragmentToUsersListFragment()
             this.findNavController().navigate(action)
+            showToast("Usuário excluído com sucesso!")
         }
     }
 
