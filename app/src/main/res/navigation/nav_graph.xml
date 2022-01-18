@@ -27,6 +27,10 @@
             app:destination="@id/usersListFragment"
             app:enterAnim="@anim/anim_slide_in_right"
             app:exitAnim="@anim/anim_slide_out_right" />
+        <argument
+            android:name="user_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

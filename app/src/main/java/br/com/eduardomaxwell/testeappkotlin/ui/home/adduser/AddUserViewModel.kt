@@ -1,5 +1,6 @@
 package br.com.eduardomaxwell.testeappkotlin.ui.home.adduser
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.eduardomaxwell.testeappkotlin.model.UserModel
@@ -17,6 +18,22 @@ class AddUserViewModel(private val repository: UserRepository) : ViewModel() {
         repository.insert(user)
     }
 
+
+    fun getUserBy(uid: Int): LiveData<UserModel> {
+        return repository.getUserBy(uid)
+    }
+
+    fun updateUser(uid: Int, matricula: String, cpf: String, email: String) =
+        viewModelScope.launch {
+            val user = UserModel(
+                uid = uid,
+                matricula = matricula,
+                cpf = cpf,
+                email = email
+            )
+            repository.update(user)
+        }
+
     fun isEntryValid(
         matricula: String,
         cpf: String,
@@ -27,5 +44,4 @@ class AddUserViewModel(private val repository: UserRepository) : ViewModel() {
         }
         return true
     }
-
 }

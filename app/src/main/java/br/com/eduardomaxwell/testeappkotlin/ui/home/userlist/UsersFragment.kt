@@ -31,7 +31,10 @@ class UsersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val userAdapter = UserAdapter()
+        val userAdapter = UserAdapter {
+            val action = UsersFragmentDirections.actionUsersFragmentToAddUserFragment(it.uid)
+            this.findNavController().navigate(action)
+        }
 
         setupRecycler(userAdapter)
         setupListeners()

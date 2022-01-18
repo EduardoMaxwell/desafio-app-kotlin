@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 data class UserModel(
 
     @PrimaryKey(autoGenerate = true)
-    val uid: Long = 0L,
+    val uid: Int = 0,
     val matricula: String,
     val cpf: String,
     val email: String

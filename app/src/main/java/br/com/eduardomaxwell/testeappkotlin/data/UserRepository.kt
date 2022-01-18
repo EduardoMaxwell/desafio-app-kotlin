@@ -21,7 +21,7 @@ class UserRepository(private val dao: UserDao) {
         dao.update(user)
     }
 
-    fun getUserBy(uid: Long): LiveData<UserModel> =
-        dao.get(uid)
+    fun getUserBy(uid: Int): LiveData<UserModel> =
+        dao.getUserBy(uid)
 
 }

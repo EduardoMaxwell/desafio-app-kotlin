@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.eduardomaxwell.testeappkotlin.model.UserModel
 import br.com.eduardomaxwell.testeappkotlin.databinding.UserItemBinding
 
-class UserAdapter : ListAdapter<UserModel, UserAdapter.UserViewHolder>(DIFF_UTIL) {
+class UserAdapter
+    (
+    private val onUserClicked: (UserModel) -> Unit
+) : ListAdapter<UserModel, UserAdapter.UserViewHolder>(DiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
 
@@ -25,7 +28,14 @@ class UserAdapter : ListAdapter<UserModel, UserAdapter.UserViewHolder>(DIFF_UTIL
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = getItem(position)
+        holder.itemView.setOnClickListener {
+            onUserClicked(user)
+        }
         holder.bind(user)
+    }
+
+    fun getUserAt(position: Int): UserModel {
+        return currentList[position]
     }
 
     class UserViewHolder(
@@ -43,16 +53,15 @@ class UserAdapter : ListAdapter<UserModel, UserAdapter.UserViewHolder>(DIFF_UTIL
         }
     }
 
-    companion object {
-        private val DIFF_UTIL = object : DiffUtil.ItemCallback<UserModel>() {
-            override fun areItemsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
-                return oldItem == newItem
-            }
-
+    private object DiffCallBack : DiffUtil.ItemCallback<UserModel>() {
+        override fun areItemsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
+            return oldItem == newItem
         }
+
+        override fun areContentsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
+            return oldItem == newItem
+        }
+
     }
+
 }
