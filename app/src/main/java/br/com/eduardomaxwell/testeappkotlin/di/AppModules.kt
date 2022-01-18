@@ -2,8 +2,8 @@ package br.com.eduardomaxwell.testeappkotlin.di
 
 import br.com.eduardomaxwell.testeappkotlin.data.UserRepository
 import br.com.eduardomaxwell.testeappkotlin.data.local.UserDatabase
-import br.com.eduardomaxwell.testeappkotlin.ui.home.adduser.AddUserViewModel
-import br.com.eduardomaxwell.testeappkotlin.ui.home.userlist.UsersViewModel
+import br.com.eduardomaxwell.testeappkotlin.ui.user.adduser.UserViewModel
+import br.com.eduardomaxwell.testeappkotlin.ui.user.userlist.UsersViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -18,7 +18,7 @@ object AppModules {
 
     private fun addViewModelModule(): Module {
         return module {
-            viewModel { AddUserViewModel(get()) }
+            viewModel { UserViewModel(get()) }
         }
     }
 

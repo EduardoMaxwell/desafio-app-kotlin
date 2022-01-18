@@ -1,4 +1,4 @@
-package br.com.eduardomaxwell.testeappkotlin.ui.home
+package br.com.eduardomaxwell.testeappkotlin.ui.user
 
 import android.app.Application
 import br.com.eduardomaxwell.testeappkotlin.di.AppModules

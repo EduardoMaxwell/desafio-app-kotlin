@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/usersListFragment"
-        android:name="br.com.eduardomaxwell.testeappkotlin.ui.home.userlist.UsersFragment"
+        android:name="br.com.eduardomaxwell.testeappkotlin.ui.user.userlist.UsersFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_users">
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/addUserFragment"
-        android:name="br.com.eduardomaxwell.testeappkotlin.ui.home.adduser.AddUserFragment"
+        android:name="br.com.eduardomaxwell.testeappkotlin.ui.user.adduser.UserFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_add_user">
         <action

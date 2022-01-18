@@ -1,4 +1,4 @@
-package br.com.eduardomaxwell.testeappkotlin.ui.home.adduser
+package br.com.eduardomaxwell.testeappkotlin.ui.user.adduser
 
 import android.os.Bundle
 import android.view.*
@@ -14,12 +14,12 @@ import br.com.eduardomaxwell.testeappkotlin.util.isValidEmail
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AddUserFragment : Fragment() {
-    private val viewModel: AddUserViewModel by viewModel()
+class UserFragment : Fragment() {
+    private val viewModel: UserViewModel by viewModel()
     private var _binding: FragmentAddUserBinding? = null
     private val binding get() = _binding!!
 
-    private val navigationArgs: AddUserFragmentArgs by navArgs()
+    private val navigationArgs: UserFragmentArgs by navArgs()
     private lateinit var user: UserModel
 
     override fun onCreateView(
@@ -95,7 +95,7 @@ class AddUserFragment : Fragment() {
             )
             showToast("Usuário atualizado com sucesso")
 
-            val action = AddUserFragmentDirections.actionAddUserFragmentToUsersListFragment()
+            val action = UserFragmentDirections.actionAddUserFragmentToUsersListFragment()
             this.findNavController().navigate(action)
         } else {
             showToast("Preencha todos os campos")
@@ -146,7 +146,7 @@ class AddUserFragment : Fragment() {
                 this.binding.edtCpf.text.toString(),
                 this.binding.edtEmail.text.toString()
             )
-            val action = AddUserFragmentDirections.actionAddUserFragmentToUsersListFragment()
+            val action = UserFragmentDirections.actionAddUserFragmentToUsersListFragment()
             this.findNavController().navigate(action)
         }
     }

@@ -1,4 +1,4 @@
-package br.com.eduardomaxwell.testeappkotlin.ui.home.adduser
+package br.com.eduardomaxwell.testeappkotlin.ui.user.adduser
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import br.com.eduardomaxwell.testeappkotlin.model.UserModel
 import br.com.eduardomaxwell.testeappkotlin.data.UserRepository
 import kotlinx.coroutines.launch
 
-class AddUserViewModel(private val repository: UserRepository) : ViewModel() {
+class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun addUser(matricula: String, cpf: String, email: String) = viewModelScope.launch {
         val user = UserModel(

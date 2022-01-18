@@ -1,4 +1,4 @@
-package br.com.eduardomaxwell.testeappkotlin.ui.home.userlist
+package br.com.eduardomaxwell.testeappkotlin.ui.user.userlist
 
 import android.os.Bundle
 import android.view.LayoutInflater

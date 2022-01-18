@@ -1,4 +1,4 @@
-package br.com.eduardomaxwell.testeappkotlin.ui.home
+package br.com.eduardomaxwell.testeappkotlin.ui.user
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
